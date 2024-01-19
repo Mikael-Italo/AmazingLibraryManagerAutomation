@@ -1,6 +1,6 @@
 ﻿namespace AmazingLibraryManagerAutomation.Steps
 {
-    public class BookIdDeleteStep
+    public class BookIdDeleteStep : RequestDefault
     {
 
     }
