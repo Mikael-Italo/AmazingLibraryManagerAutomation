@@ -1,6 +1,6 @@
 ﻿namespace AmazingLibraryManagerAutomation.Steps
 {
-    public class BookGetStep : RequestDefault
+    public class BookGetStep : UtilsBase
     {
 
     }

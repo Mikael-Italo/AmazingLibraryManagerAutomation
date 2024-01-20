@@ -1,10 +1,10 @@
 ﻿namespace AmazingLibraryManagerAutomation.Utils
 {
-    public class RequestDefault
+    public class UtilsBase
     {
         public static RestClient? Client { get; set; }
         public static RestResponse? Response { get; set; }
-        public RequestDefault() { Client = new(GetValueJsonGlobalVariables("Url")); }
+        public UtilsBase() { Client = new(GetValueJsonGlobalVariables("Url")); }
         
         /// <summary>
         /// RestRequest Methods for implementation at steps.cs
