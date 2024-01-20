@@ -4,7 +4,7 @@
     {
         public static RestClient? Client { get; set; }
         public static RestResponse? Response { get; set; }
-        public RequestDefault() { Client = new("http://localhost:5019/"); }
+        public RequestDefault() { Client = new(GetValueJsonGlobalVariables("Url")); }
         
         /// <summary>
         /// RestRequest Methods for implementation at steps.cs
@@ -65,6 +65,16 @@
             request.AddParameter("id", Id);
 
             return request;
+        }
+
+        public static string GetValueJsonGlobalVariables(string key)
+        {
+            StreamReader r = new("GlobalVariables.json");
+
+            var data = (JObject)JsonConvert.DeserializeObject(r.ReadToEnd());
+            string Value = data[key].Value<string>();
+
+            return Value;
         }
     }
 }
