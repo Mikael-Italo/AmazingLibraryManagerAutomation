@@ -1,4 +1,4 @@
-namespace AmazingLibraryManagerAutomation.Features
+namespace AmazingLibraryManagerAutomation.Features.Book
 {
     [TestClass]
     public class BookPostFeature
