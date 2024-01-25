@@ -6,7 +6,11 @@ namespace AmazingLibraryManagerAutomation.Features.Book
         [TestMethod]
         public void ValidarLivro2()
         {
-            string a = null;
+            ResultGenerator Result = new(TestContext!.TestName!);
+
+            Result.WriteBDD("Dado");
+            Result.WriteBDD("Quando");
+            Result.WriteBDD("Então");
         }
 
     }

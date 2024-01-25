@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-
-namespace AmazingLibraryManagerAutomation.Utils
+﻿namespace AmazingLibraryManagerAutomation.Utils
 {
     [TestClass]
     public abstract class Hooks
@@ -10,13 +8,15 @@ namespace AmazingLibraryManagerAutomation.Utils
         [TestInitialize]
         public void StartUp()
         {
-            ResultGenerator resultGeneratorAfter = new(TestContext!.TestName!);
+            ResultGenerator RgA = new(TestContext!.TestName!);
+            RgA.CreateBaseResult();
         }
 
         [TestCleanup]
         public void Cleanup()
         {
-            ResultGenerator resultGeneratorBefore = new(TestContext!.TestName!, "test document");
+            ResultGenerator RgF = new(TestContext!.TestName!);
+            RgF.FinishBaseResult();
         }
     }
 }

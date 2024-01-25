@@ -2,12 +2,17 @@
 {
     public class ResultGenerator
     {
-        private readonly string date = DateTime.Now.ToString("dd_MM_yyyy");
+        private readonly string nameCTContext; 
+        private StreamWriter _sw;
 
-        StreamWriter _sw;
-        public ResultGenerator(string nomeCT)
+        public ResultGenerator(string ContextCT)
         {
-            _sw = new StreamWriter($"Results\\{nomeCT}_{date}.html", true, Encoding.UTF8);
+            this.nameCTContext = ContextCT;
+        }
+
+        public void CreateBaseResult()
+        {
+            _sw = new StreamWriter($"Results\\{nameCTContext}.html", true, Encoding.UTF8);
 
             _sw!.WriteLine
             ("<!DOCTYPE html>" +
@@ -19,33 +24,50 @@
             "<meta name='viewport' content='width=device-width, initial-scale=1'>\n" +
             "</head>\n" +
             "<body>\n  " +
-            "<h1 style=\"margin-left: 30%;\">__________Evidência de teste___________</h1>\n    <hr>\n   " +
+            "<h1 style=\"margin-left: 30%;\">__________ Evidência de teste ___________</h1>\n    <hr>\n   " +
             "<div>\n      " +
             $"<h2 style=\"color: red;\">Data e hora do teste: {DateTime.Now.ToString()}</h2>\n<hr>\n" +
-            $"<h4 style=\"margin-left: 45%;\">{nomeCT}</h4>\n            <hr>\n       "
+            $"<h4 style=\"margin-left: 45%;\">{nameCTContext}</h4>\n            <hr>\n       " +
+            $"</div>" +
+            $"<div>"
             );
             _sw.Close();
         }
-        public ResultGenerator(string nomeCT, string bdd)
+
+        public void WriteBDD(string bdd)
         {
-            //_sw = new StreamWriter($"Results\\{nomeCT}_{date}.html", true, Encoding.UTF8);
-            using var file = File.AppendText($"Results\\{nomeCT}_{date}.html");
+            using var file = File.AppendText($"Results\\{nameCTContext}.html");
 
             file.WriteLine
             ("<p style=\"color: green;\">\n         " +
             $" {bdd} \n       " +
-            "</p>\n        <hr>\n   " +
-            "</div>\n    <div>\n       " +
-     //     $"<h2 style=\"color: green;\">response.StatusCode: {response.StatusCode} <br>\n" +
-     //     $"response.StatusCode: {(int)response.StatusCode} <br>\n" +
-     //     $"response.content: {response.Content} <br>\n" +
-            "</h2>\n        <hr>\n <hr>\n   " +
-            "</div>\n" +
-            "</body>\n" +
-            "</html>"
+            "</p>\n           \n   "
             );
-            //_sw.Close();
+        }
+
+        public void WriteResponseResults(RestResponse response)
+        {
+            using var file = File.AppendText($"Results\\{nameCTContext}.html");
+
+            file.WriteLine
+            ("</div>" +
+            "<div>\n       " +
+            $"<h2 style=\"color: green;\">response.StatusCode: {response.StatusCode} <br>\n" +
+            $"response.StatusCode: {(int)response.StatusCode} <br>\n" +
+            $"response.content: {response.Content} <br>\n" +
+            "</h2>\n        <hr>\n <hr>\n   "
+            );
             file.Close();
+        }
+
+        public void FinishBaseResult()
+        {
+            using var file = File.AppendText($"Results\\{nameCTContext}.html");
+
+            file.WriteLine
+            ("</div>\n" +
+            "</body>\n" +
+            "</html>");
         }
     }
 }
