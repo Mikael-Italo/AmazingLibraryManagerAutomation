@@ -1,18 +1,22 @@
-﻿namespace AmazingLibraryManagerAutomation.Utils
+﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+
+namespace AmazingLibraryManagerAutomation.Utils
 {
-    public class Hooks
+    [TestClass]
+    public abstract class Hooks
     {
-    
+        public TestContext? TestContext { get; set; }
+
         [TestInitialize]
-        public static void StartUp()
+        public void StartUp()
         {
-            
+            ResultGenerator resultGeneratorAfter = new(TestContext!.TestName!);
         }
 
         [TestCleanup]
-        public static void Cleanup()
+        public void Cleanup()
         {
-            
+            ResultGenerator resultGeneratorBefore = new(TestContext!.TestName!, "test document");
         }
     }
 }
