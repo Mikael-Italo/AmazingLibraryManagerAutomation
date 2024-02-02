@@ -1,7 +1,7 @@
 ﻿namespace AmazingLibraryManagerAutomation.Features.Users
 {
     [TestClass]
-    public class UserGetIdFeature
+    public class UserGetIdFeature : Hooks
     {
 
     }

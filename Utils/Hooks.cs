@@ -17,6 +17,7 @@
         {
             ResultGenerator RgF = new(TestContext!.TestName!);
             RgF.FinishBaseResult();
+            RgF.ClassifyResult(TestContext.CurrentTestOutcome.ToString());
         }
     }
 }

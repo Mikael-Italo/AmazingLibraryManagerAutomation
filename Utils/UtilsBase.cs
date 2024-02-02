@@ -2,9 +2,9 @@
 {
     public class UtilsBase
     {
-        public static RestClient? Client { get; set; }
+        public static RestClient Client = new (GetValueJsonGlobalVariables("Url"));
         public static RestResponse? Response { get; set; }
-        public UtilsBase() { Client = new(GetValueJsonGlobalVariables("Url")); }
+        public UtilsBase() {  }
         
         /// <summary>
         /// RestRequest Methods for implementation at steps.cs

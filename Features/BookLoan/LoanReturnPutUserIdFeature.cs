@@ -1,7 +1,7 @@
 ﻿namespace AmazingLibraryManagerAutomation.Features.BookLoan
 {
     [TestClass]
-    public class LoanReturnPutUserIdFeature
+    public class LoanReturnPutUserIdFeature : Hooks
     {
 
     }

@@ -1,7 +1,7 @@
 ﻿namespace AmazingLibraryManagerAutomation.Features.Book
 {
     [TestClass]
-    public class BookPutFeature
+    public class BookPutFeature : Hooks
     {
 
     }
